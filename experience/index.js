@@ -7,10 +7,10 @@ import starImg2 from "/textures/8.png"
 
 
 export function createScene(canvas) {
-   /**
-   * @params 
-  */
-   const sizes = {
+  /**
+  * @params 
+ */
+  const sizes = {
     width: window.innerWidth,
     height: window.innerHeight
   }
@@ -68,6 +68,7 @@ export function createScene(canvas) {
     0.1,
     50
   )
+
   const controls = new OrbitControls(camera, canvas);
   camera.position.z = 5;
   camera.position.y = 4;
@@ -134,9 +135,10 @@ export function createScene(canvas) {
       let ap = ba * Math.PI * 2;
       let sp = params.spin / r * 1.17;
 
-      let rx = (Math.random() - 0.5) * 0.2 * (params.randomness * (r / 1.1));
-      let ry = (Math.random() - 0.5) * 0.2 * (params.randomness * (r / 1.5));
-      let rz = (Math.random() - 0.5) * 0.2 * (params.randomness * (r / 1.1));
+
+      let rx = (Math.random() - 0.5) * 0.2 * (params.randomness * (r / 1.1) * (Math.random() - 0.5) * Math.PI);
+      let ry = (Math.random() - 0.5) * 0.2 * (params.randomness * ((r / 1.5) * (Math.random() - 0.5) * Math.PI));
+      let rz = (Math.random() - 0.5) * 0.2 * (params.randomness * (r / 1.1)) * ((Math.random() - 0.5) * Math.PI);
 
 
       positionArray[vertex] = (Math.cos(ap + sp) + rx) * r;
@@ -236,6 +238,6 @@ export function createScene(canvas) {
   /**
    * @helpers 
   */
-  // const axesHelper = new THREE.AxesHelper();
-  // scene.add(axesHelper);
+  const axesHelper = new THREE.AxesHelper();
+  scene.add(axesHelper);
 }
